@@ -1,3 +1,5 @@
+
+============================
 How to Use 4-print_square.py
 ============================
 
@@ -89,12 +91,4 @@ At least one argument must be provided.
     >>> print_square()
     Traceback (most recent call last):
     TypeError: print_square() missing 1 required positional argument: 'size'
-Footer
-© 2023 GitHub, Inc.
-Footer navigation
-Terms
-Privacy
-Security
-Status
-Docs
 

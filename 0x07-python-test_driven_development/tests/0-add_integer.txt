@@ -1,67 +1,125 @@
+
 ===========================
-How to Use 3-say_my_name.py
+How to Use 0-add_integer.py
 ===========================
 
-This modules defines a function ``say_my_name(first_name, last_name="")``.
+This module defines an integer addition function ``add_integer(a, b=98)``.
 
 Usage
 =====
 
-``say_my_name(...)`` prints "My name is <first_name> <last_name>".
+``add_integer(...)``` returns the addition of its two arguments. For numbers,
+that value is equivalent to using the ``+`` operator.
 
 ::
 
-    >>> say_my_name = __import__('3-say_my_name').say_my_name
-    >>> say_my_name("Beta", "Scribbles")
-    My name is Beta Scribbles
+    >>> add_integer = __import__('0-add_integer').add_integer
+    >>> add_integer(2, 3)
+    5
 
 ::
 
-    >>> say_my_name("Tom Jerry", "Avril")
-    My name is Tom Jerry Avril
+    >>> add_integer(2, -3)
+    -1
 
-The parameter ```last_name``` is optional. If no last name is provided,
-an empty string is printed instead.
-
-::
-
-    >>> say_my_name("Beta")
-    My name is Beta 
-
-Invalid Names
-=============
-
-The parameters ``first_name`` and ``last_name``` must be strings. Otherwise,
-a TypeError is raised.
+The function also works with floating-point values.
 
 ::
 
-    >>> say_my_name(6, "James")
+    >>> add_integer(2.0, 3.0)
+    5
+
+Note that floats are casted to ints before addition is performed.
+
+::
+
+    >>> add_integer(2.9, 0.2)
+    2
+
+::
+
+    >>> add_integer(-2.9, -0.2)
+    -2
+
+Floating and non-floating point values can be combined.
+
+::
+
+    >>> add_integer(2.3, -3)
+    -1
+
+The second argument is optional - by default, it is 98.
+
+::
+
+    >>> add_integer(2)
+    100
+
+Non-Numbers
+===========
+
+``add_integer()`` expects that both arguments are either integers or floats.
+If either argument is a non-integer and non-float, a TypeError is raised:
+
+::
+
+    >>> add_integer("hello", 3)
     Traceback (most recent call last):
-    TypeError: first_name must be a string
+    TypeError: a must be an integer
 
 ::
 
-    >>> say_my_name("MeCalister", ["Cavs", "Bakers", "Heat"])
+    >>> add_integer(2, "hello")
     Traceback (most recent call last):
-    TypeError: last_name must be a string
+    TypeError: b must be an integer
 
 ::
 
-    >>> say_my_name({"LeBron": 6, "Lames": 23}, 7.7)
+    >>> add_integer(None)
     Traceback (most recent call last):
-    TypeError: first_name must be a string
+    TypeError: a must be an integer
 
 ::
 
-    >>> say_my_name(None)
+    >>> add_integer(2.3, None)
     Traceback (most recent call last):
-    TypeError: first_name must be a string
+    TypeError: b must be an integer
 
-At least one name must be provided.
+If both arguments are non-integers and non-floats, a TypeError message is only
+printed for the first argument.
 
 ::
 
-    >>> say_my_name()
+    >>> add_integer("hello", "there")
     Traceback (most recent call last):
-    TypeError: say_my_name() missing 1 required positional argument: 'first_name'
+    TypeError: a must be an integer
+
+The function will fail if infinity is provided.
+
+::
+
+    >>> add_integer(float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+     
+
+::
+
+    >>> add_integer(2, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+And again with NaN numbers.
+
+::
+
+    >>> add_integer(float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
+::
+
+    >>> add_integer(2, float('nan'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
+
