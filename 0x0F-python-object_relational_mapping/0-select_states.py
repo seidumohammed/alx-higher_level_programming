@@ -1,6 +1,5 @@
 #!/usr/bin/python3
-"""
-This script lists all states from the
+"""This script lists all states from the
 database `hbtn_0e_0_usa`.
 """
 
