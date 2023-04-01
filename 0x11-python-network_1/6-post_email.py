@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Sends a POST request to a URL with an email as arg"""
+"""sends a POST request to a specified URL.Takes two command line args:
+the URL to send the request to, an email address to include in the request data"""
 import sys
 import requests
 
